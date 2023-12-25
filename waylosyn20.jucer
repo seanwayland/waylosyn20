@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="SSymjl" name="waylosynth10" projectType="audioplug" pluginFormats="buildAU,buildStandalone,buildVST3"
+<JUCERPROJECT id="SSymjl" name="waylosynth20" projectType="audioplug" pluginFormats="buildAU,buildStandalone,buildVST3"
               headerPath="../../../common&#10;" pluginManufacturer="www.Seanwayland.com"
               companyName="www.Seanwayland.com" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               displaySplashScreen="1" jucerFormatVersion="1" companyWebsite="www.Seanwayland.com"
               pluginManufacturerCode="SWws" pluginCode="SWss" version="2.0">
-  <MAINGROUP id="IAfKTv" name="waylosynth10">
+  <MAINGROUP id="IAfKTv" name="waylosynth20">
     <GROUP id="{6DFBD621-25B8-2BB1-AE51-57E407873211}" name="Source">
       <GROUP id="{B1FB8EAC-1FAE-8E39-F970-1FEBA5AF57D6}" name="assets">
         <FILE id="AWlkuI" name="a.txt" compile="0" resource="1" file="Source/assets/a.txt"/>
@@ -14,6 +14,8 @@
         <FILE id="oMQKqp" name="logo-colour.png" compile="0" resource="1" file="Source/assets/logo-colour.png"/>
       </GROUP>
       <FILE id="fZ3PyE" name="ADSR.cpp" compile="1" resource="0" file="Source/ADSR.cpp"/>
+      <FILE id="exgAG6" name="Addr.h" compile="0" resource="0" file="Source/Addr.h"/>
+      <FILE id="GiVXQ1" name="Addr.cpp" compile="1" resource="0" file="Source/Addr.cpp"/>
       <FILE id="OH7ZhZ" name="ADSR.h" compile="0" resource="0" file="Source/ADSR.h"/>
       <FILE id="QXRCTR" name="AttackDecayEnvelope.cpp" compile="1" resource="0"
             file="Source/AttackDecayEnvelope.cpp"/>

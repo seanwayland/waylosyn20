@@ -757,7 +757,9 @@ float Oscillator::process()
         // value = fm_value_2;
 
         // operator 1
-        float fm_value_1 = sinf(m_twopi * fm_phase_2 + m_feedback * old_value_1 + env_value * (m_note_velocity * 0.8) * m_mod_g * 10 * fm_value_2 + (m_note_velocity * 0.8) * m_mod * 10 * fm_value_3);
+        float fm_value_1 = sinf(m_twopi * fm_phase_2 + m_feedback * old_value_1 + //env_value * (m_note_velocity * 0.8) * m_mod_g * 10 * fm_value_2 +
+            (m_note_velocity * 0.8) * m_mod_g * 10 * fm_value_2 +
+                                (m_note_velocity * 0.8) * m_mod * 10 * fm_value_3);
         old_value_1 = fm_value_1;
         // value = (fm_value_1 + old_value)/2;
         value = fm_value_1 + fm_value_3;
@@ -1030,8 +1032,10 @@ float Oscillator::process()
         fixed_pulse_counter += 11000 * m_oneOverSr;
         //env.process();
 
-        amp_env.Set_amp_envelope_rate(m_attackRate * 100);
-        value = value * amp_env.process(m_attackShape, 0.75, "attack_env");
+        // HACKING THIS !!!!
+        
+        //amp_env.Set_amp_envelope_rate(m_attackRate * 100);
+        //value = value * amp_env.process(m_attackShape, 0.75, "attack_env");
 
         if (m_cutoff < 0.99)
         {

@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 
-static const int numberOfVoices = 8;
+static const int numberOfVoices = 20;
 
 //==============================================================================
 MySynthesiserVoice::MySynthesiserVoice()
@@ -24,6 +24,7 @@ void MySynthesiserVoice::startNote(int midiNoteNumber, float velocity,
 {
     oscillator.reset(getSampleRate());
     oscillator.setSampleRate(getSampleRate());
+    envelope.setSampleRate(getSampleRate());
     level = velocity * 0.15;
     envelope.noteOn();
     auto m_freq = (MidiMessage::getMidiNoteInHertz(midiNoteNumber));
@@ -37,6 +38,7 @@ void MySynthesiserVoice::stopNote(float /*velocity*/, bool allowTailOff)
 {
     envelope.noteOff();
     oscillator.gate_filter_env();
+    
 }
 
 void MySynthesiserVoice::pitchWheelMoved(int value)
@@ -50,7 +52,7 @@ void MySynthesiserVoice::renderNextBlock(AudioSampleBuffer &outputBuffer, int st
     {
 
         //oscillator.setSampleRate(getSampleRate());
-        auto envAmp = envelope.getNextSample();
+        auto envAmp = envelope.process();
         auto thisSample = oscillator.process();
         auto currentSample = thisSample * level * envAmp;
 
@@ -69,7 +71,7 @@ void MySynthesiserVoice::renderNextBlock(AudioSampleBuffer &outputBuffer, int st
 
 void MySynthesiserVoice::setEnvelopeParameters(ADSR::Parameters params)
 {
-    envelope.setParameters(params);
+    //envelope.setParameters(params);
 }
 
 void MySynthesiserVoice::setWavetypeParameter(int type)
@@ -513,7 +515,7 @@ AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
                                                      1.678f, secondSliderValueToText, secondSliderTextToValue));
 
     parameters.push_back(std::make_unique<Parameter>(ParameterID(String("sustain"), 1), String("Sustain"), String(),
-                                                     NormalisableRange<float>(0.001f, 1.f, 0.001f, 0.3f),
+                                                     NormalisableRange<float>(0.000001f, 1.f, 0.001f, 0.3f),
                                                      0.708f, secondSliderValueToText, secondSliderTextToValue));
 
     parameters.push_back(std::make_unique<Parameter>(ParameterID(String("release"), 1), String("Release"), String(),

@@ -4,6 +4,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Oscillator.h"
+#include "Addr.h"
 
 //==============================================================================
 struct MySynthesiserSound   : public SynthesiserSound
@@ -57,7 +58,8 @@ struct MySynthesiserVoice   : public SynthesiserVoice
     
 private:
     Oscillator oscillator;
-    ADSR envelope;
+    //ADSR envelope;
+    Addr envelope;
     double level = 0.0;
     int voice_number = 0;
     bool sustain_down = 0;

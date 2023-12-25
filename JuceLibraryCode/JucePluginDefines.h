@@ -41,10 +41,10 @@
  #define JucePlugin_Enable_ARA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "waylosynth10"
+ #define JucePlugin_Name                   "waylosynth20"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "waylosynth10"
+ #define JucePlugin_Desc                   "waylosynth20"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "www.Seanwayland.com"
@@ -101,19 +101,19 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         waylosynth10AU
+ #define JucePlugin_AUExportPrefix         waylosynth20AU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "waylosynth10AU"
+ #define JucePlugin_AUExportPrefixQuoted   "waylosynth20AU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.www_Seanwayland_com.waylosynth10
+ #define JucePlugin_CFBundleIdentifier     com.www_Seanwayland_com.waylosynth20
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.www_Seanwayland_com.waylosynth10
+ #define JucePlugin_AAXIdentifier          com.www_Seanwayland_com.waylosynth20
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
@@ -137,7 +137,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "www.Seanwayland.com: waylosynth10"
+ #define JucePlugin_IAAName                "www.Seanwayland.com: waylosynth20"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
@@ -152,10 +152,10 @@
  #define JucePlugin_ARATransformationFlags  0
 #endif
 #ifndef  JucePlugin_ARAFactoryID
- #define JucePlugin_ARAFactoryID           "com.www_Seanwayland_com.waylosynth10.factory"
+ #define JucePlugin_ARAFactoryID           "com.www_Seanwayland_com.waylosynth20.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.www_Seanwayland_com.waylosynth10.aradocumentarchive.2.0"
+ #define JucePlugin_ARADocumentArchiveID   "com.www_Seanwayland_com.waylosynth20.aradocumentarchive.2.0"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""
