@@ -28,13 +28,6 @@ private:
     Slider attackKnob;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> attackAttachment;
 
-    Label attackRateLabel;
-    Slider attackRateKnob;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> attackRateAttachment;
-
-    Label attackShapeLabel;
-    Slider attackShapeKnob;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> attackShapeAttachment;
 
     Label decayLabel;
     Slider decayKnob;
@@ -190,7 +183,7 @@ private:
 
     MidiKeyboardComponent keyboardComponent;
     
-    float settingsArray [9][30] = {
+    float settingsArray [9][28] = {
         
         {},
         // waylo lead
@@ -198,8 +191,8 @@ private:
         {
 //          gravy , grease , citoff, resonance, bassoff, gain
             0.1782, 0.2316, 0.01425, 0.3273, 0.500, 10.00,
-//          lin attack, exp att, att shape, decay, sustain, release
-            0.047,  0.562, 0.797, 2.83, 0.75, 0.025,
+//          lin attack, decay, sustain, release
+            0.047, 2.83, 0.75, 0.025,
 //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
             0.0095, 0.3734, 0.1873, 0.2416,0.0844,0.0525,0.0227,0.0089,
 //          cut key,cut vel,grvy key,grvy vel,
@@ -213,8 +206,8 @@ private:
         {
 //          gravy , grease , citoff, resonance, bassoff, gain
             0.55, 0.51, 0.05, 0.1397, 0.7532, 12.00,
-//          lin attack, exp att, att shape, decay, sustain, release
-            0.006,  0.923, 0.958, 1.425, 0.07, 0.015,
+//          lin attack, decay, sustain, release
+            0.006, 1.425, 0.07, 0.015,
 //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
             0.105, 1.0, 0.9783,0.6427,0.2592,1.0,0.0,0.0162,
 //          cut key,cut vel,grvy key,grvy vel,
@@ -229,8 +222,8 @@ private:
             
             //          gravy , grease , citoff, resonance, bassoff, gain
                         0.1082, 0.2409, 0.01425, 0.3273, 0.5535, 10.00,
-            //          lin attack, exp att, att shape, decay, sustain, release
-                        0.010,  0.815, 0.787, 2.622, 0.184, 0.006,
+            //          lin attack, decay, sustain, release
+                        0.010, 2.622, 0.184, 0.006,
             //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
                         0.0095, 0.3734, 0.1873, 0.2416,0.0844,0.0525,0.0227,0.0089,
             //          cut key,cut vel,grvy key,grvy vel,
@@ -246,8 +239,8 @@ private:
         {
             //          gravy , grease , citoff, resonance, bassoff, gain
                         0.1782, 0.2316, 0.01425, 0.3273, 0.500, 10.00,
-            //          lin attack, exp att, att shape, decay, sustain, release
-                        0.047,  0.562, 0.797, 2.83, 0.75, 0.025,
+            //          lin attack, decay, sustain, release
+                        0.047, 2.83, 0.75, 0.025,
             //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
                         0.0095, 0.3734, 0.1873, 0.2416,0.0844,0.0525,0.0227,0.0089,
             //          cut key,cut vel,grvy key,grvy vel,
@@ -261,8 +254,8 @@ private:
         {
             //          gravy , grease , citoff, resonance, bassoff, gain
                         0.1782, 0.2316, 0.01425, 0.3273, 0.500, 10.00,
-            //          lin attack, exp att, att shape, decay, sustain, release
-                        0.047,  0.562, 0.797, 2.83, 0.75, 0.025,
+            //          lin attack,  decay, sustain, release
+                        0.047, 2.83, 0.75, 0.025,
             //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
                         0.0095, 0.3734, 0.1873, 0.2416,0.0844,0.0525,0.0227,0.0089,
             //          cut key,cut vel,grvy key,grvy vel,
@@ -275,8 +268,8 @@ private:
         {
 //          gravy , grease , citoff, resonance, bassoff, gain
             0.22, 0.23, 0.64, 0.2797, 0.2032, 12.00,
-//          lin attack, exp att, att shape, decay, sustain, release
-            0.003,  0.874, 0.825, 0.283, 0.3, 0.023,
+//          lin attack,  decay, sustain, release
+            0.003,  0.283, 0.3, 0.023,
 //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
             0.105, 0.1437, 0.45,0.3,0.2,0.15,0.0,0.3,
 //          cut key,cut vel,grvy key,grvy vel,
@@ -289,8 +282,8 @@ private:
         {
 //          gravy , grease , citoff, resonance, bassoff, gain
             0.31, 0.39, 0.569, 0.4012, 0.1989, 12.00,
-//          lin attack, exp att, att shape, decay, sustain, release
-            0.008,  0.893, 0.825, 0.283, 0.156, 0.023,
+//          lin attack,  decay, sustain, release
+            0.008,  0.283, 0.156, 0.023,
 //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
             0.0322, 0.1437, 0.45,0.3,0.2,0.15,0.0,0.3,
 //          cut key,cut vel,grvy key,grvy vel,
@@ -304,8 +297,8 @@ private:
         {
 //          gravy , grease , citoff, resonance, bassoff, gain
             0.11, 0.06, 0.569, 0.4012, 0.2589, 12.00,
-//          lin attack, exp att, att shape, decay, sustain, release
-            0.008,  0.893, 0.825, 2.5, 0.366, 0.023,
+//          lin attack, decay, sustain, release
+            0.008,  2.5, 0.366, 0.023,
 //          flt atck,flt vel,flt amt,flt att shp,flt decy,flt dec shp, flt sus, flt rel
             0.0322, 0.1437, 0.45,0.3,0.2,0.15,0.0,0.3,
 //          cut key,cut vel,grvy key,grvy vel,

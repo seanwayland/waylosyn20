@@ -19,7 +19,7 @@ waylosynth2AudioProcessorEditor::waylosynth2AudioProcessorEditor(waylosynth2 &p,
     title.setJustificationType(Justification::horizontallyCentred);
     addAndMakeVisible(&title);
 
-    attackLabel.setText("Linear Attack", NotificationType::dontSendNotification);
+    attackLabel.setText("Attack", NotificationType::dontSendNotification);
     attackLabel.setJustificationType(Justification::horizontallyCentred);
     addAndMakeVisible(&attackLabel);
 
@@ -30,27 +30,6 @@ waylosynth2AudioProcessorEditor::waylosynth2AudioProcessorEditor(waylosynth2 &p,
 
     attackAttachment.reset(new AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "attack", attackKnob));
 
-    attackRateLabel.setText("exp Att Rate", NotificationType::dontSendNotification);
-    attackRateLabel.setJustificationType(Justification::horizontallyCentred);
-    addAndMakeVisible(&attackRateLabel);
-
-    attackRateKnob.setLookAndFeel(&plugexLookAndFeel);
-    attackRateKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
-    attackRateKnob.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
-    addAndMakeVisible(&attackRateKnob);
-
-    attackRateAttachment.reset(new AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "attackRate", attackRateKnob));
-
-    attackShapeLabel.setText("exp Att Shape", NotificationType::dontSendNotification);
-    attackShapeLabel.setJustificationType(Justification::horizontallyCentred);
-    addAndMakeVisible(&attackShapeLabel);
-
-    attackShapeKnob.setLookAndFeel(&plugexLookAndFeel);
-    attackShapeKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
-    attackShapeKnob.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
-    addAndMakeVisible(&attackShapeKnob);
-
-    attackShapeAttachment.reset(new AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "attackShape", attackShapeKnob));
 
     decayLabel.setText("Decay", NotificationType::dontSendNotification);
     decayLabel.setJustificationType(Justification::horizontallyCentred);
@@ -478,8 +457,6 @@ waylosynth2AudioProcessorEditor::waylosynth2AudioProcessorEditor(waylosynth2 &p,
 waylosynth2AudioProcessorEditor::~waylosynth2AudioProcessorEditor()
 {
     attackKnob.setLookAndFeel(nullptr);
-    attackRateKnob.setLookAndFeel(nullptr);
-    attackShapeKnob.setLookAndFeel(nullptr);
     decayKnob.setLookAndFeel(nullptr);
     sustainKnob.setLookAndFeel(nullptr);
     releaseKnob.setLookAndFeel(nullptr);
@@ -568,14 +545,7 @@ void waylosynth2AudioProcessorEditor::resized()
     attackLabel.setBounds(attackArea.removeFromTop(20));
     attackKnob.setBounds(attackArea);
 
-    auto attackRateArea = area2.removeFromLeft(width / 6.0f).withSizeKeepingCentre(80, 100);
-    attackRateLabel.setBounds(attackRateArea.removeFromTop(20));
-    attackRateKnob.setBounds(attackRateArea);
-
-    auto attackShapeArea = area2.removeFromLeft(width / 6.0f).withSizeKeepingCentre(80, 100);
-    attackShapeLabel.setBounds(attackShapeArea.removeFromTop(20));
-    attackShapeKnob.setBounds(attackShapeArea);
-
+   
     auto decayArea = area2.removeFromLeft(width / 6.0f).withSizeKeepingCentre(80, 100);
     decayLabel.setBounds(decayArea.removeFromTop(20));
     decayKnob.setBounds(decayArea);
@@ -650,14 +620,6 @@ void waylosynth2AudioProcessorEditor::resized()
     greaseKeyboardLabel.setBounds(greaseKeyboardArea.removeFromTop(20));
     greaseKeyboardKnob.setBounds(greaseKeyboardArea);
 
-//    auto filterFMVelocityArea = area6.removeFromRight(width / 8.0f).withSizeKeepingCentre(80, 100);
-//    filtFMVelocityLabel.setBounds(filterFMVelocityArea.removeFromTop(20));
-//    filtFMVelocityKnob.setBounds(filterFMVelocityArea);
-//
-//    auto filterFMArea = area6.removeFromRight(width / 8.0f).withSizeKeepingCentre(80, 100);
-//    filtFMLabel.setBounds(filterFMArea.removeFromTop(20));
-//    filtFMKnob.setBounds(filterFMArea);
-
     auto detuneArea = area6.removeFromRight(width / 8.0f).withSizeKeepingCentre(80, 100);
     detuneLabel.setBounds(detuneArea.removeFromTop(20));
     detuneKnob.setBounds(detuneArea);
@@ -703,30 +665,26 @@ void waylosynth2AudioProcessorEditor::getPreset(){
       bassoffKnob.setValue(settingsArray[preset][4]);
       gainKnob.setValue(settingsArray[preset][5]);
       attackKnob.setValue(settingsArray[preset][6]);
-      attackRateKnob.setValue(settingsArray[preset][7]);
-      attackShapeKnob.setValue(settingsArray[preset][8]);
-      decayKnob.setValue(settingsArray[preset][9]);
-      sustainKnob.setValue(settingsArray[preset][10]);
-      releaseKnob.setValue(settingsArray[preset][11]);
-      filtAttackKnob.setValue(settingsArray[preset][12]);
-      filtVelocityKnob.setValue(settingsArray[preset][13]);
-      filtAmountKnob.setValue(settingsArray[preset][14]);
-      filtAttackShapeKnob.setValue(settingsArray[preset][15]);
-      filtDecayKnob.setValue(settingsArray[preset][16]);
-      filtDecayShapeKnob.setValue(settingsArray[preset][17]);
-      filtSustainKnob.setValue(settingsArray[preset][18]);
-      filtReleaseKnob.setValue(settingsArray[preset][19]);
-      cutoffKeyboardKnob.setValue(settingsArray[preset][20]);
-      cutoffVelocityKnob.setValue(settingsArray[preset][21]);
-      gravyKeyboardKnob.setValue(settingsArray[preset][22]);
-      gravyVelocityKnob.setValue(settingsArray[preset][23]);
-      detuneKnob.setValue(settingsArray[preset][24]);
-      greaseKeyboardKnob.setValue(settingsArray[preset][25]);
-      greaseVelocityKnob.setValue(settingsArray[preset][26]);
-      filterTypeCombo.setSelectedItemIndex(settingsArray[preset][27]);
-      spaceCombo.setSelectedItemIndex(settingsArray[preset][28]);
-      typeCombo.setSelectedItemIndex(settingsArray[preset][29]);
-    
-
+      decayKnob.setValue(settingsArray[preset][7]);
+      sustainKnob.setValue(settingsArray[preset][8]);
+      releaseKnob.setValue(settingsArray[preset][9]);
+      filtAttackKnob.setValue(settingsArray[preset][10]);
+      filtVelocityKnob.setValue(settingsArray[preset][11]);
+      filtAmountKnob.setValue(settingsArray[preset][12]);
+      filtAttackShapeKnob.setValue(settingsArray[preset][13]);
+      filtDecayKnob.setValue(settingsArray[preset][14]);
+      filtDecayShapeKnob.setValue(settingsArray[preset][15]);
+      filtSustainKnob.setValue(settingsArray[preset][16]);
+      filtReleaseKnob.setValue(settingsArray[preset][17]);
+      cutoffKeyboardKnob.setValue(settingsArray[preset][18]);
+      cutoffVelocityKnob.setValue(settingsArray[preset][19]);
+      gravyKeyboardKnob.setValue(settingsArray[preset][20]);
+      gravyVelocityKnob.setValue(settingsArray[preset][21]);
+      detuneKnob.setValue(settingsArray[preset][22]);
+      greaseKeyboardKnob.setValue(settingsArray[preset][23]);
+      greaseVelocityKnob.setValue(settingsArray[preset][24]);
+      filterTypeCombo.setSelectedItemIndex(settingsArray[preset][25]);
+      spaceCombo.setSelectedItemIndex(settingsArray[preset][26]);
+      typeCombo.setSelectedItemIndex(settingsArray[preset][27]);
     
 }
