@@ -32,8 +32,7 @@ struct MySynthesiserVoice   : public SynthesiserVoice
     void setFilterTypeParameter(int filterType);
     void setSharpParameter(float sharp);
     void setModParameter(float mod);
-    void setAttackRateParameter(float attackRate);
-    void setAttackShapeParameter(float attackShape);
+    void setAttackParameter(float attack);
     void setFilterVelocityParameter(float filterVelocity);
     void setGreaseVelocityParameter(float greaseVelocity);
     void setGreaseKeyboardParameter(float greaseKeyboard);
@@ -77,8 +76,7 @@ public:
     void setSpacetypeParameter(int type);
     void setSharpParameter(float sharp);
     void setModParameter(float mod);
-    void setAttackRateParameter(float attackRate);
-    void setAttackShapeParameter(float attackshape);
+    void setAttackParameter(float attack);
     void setFilterVelocityParameter(float filterVelocity);
     void setGreaseVelocityParameter(float greaseVelocity);
     void setGreaseKeyboardParameter(float greaseKeyboard);
@@ -160,8 +158,6 @@ private:
     MySynthesiser synthesiser;
 
     std::atomic<float> *attackParameter = nullptr;
-    std::atomic<float> *attackRateParameter = nullptr;
-    std::atomic<float> *attackShapeParameter = nullptr;
     std::atomic<float> *decayParameter = nullptr;
     std::atomic<float> *sustainParameter = nullptr;
     std::atomic<float> *releaseParameter = nullptr;

@@ -26,8 +26,7 @@ class Oscillator {
         float hipass(float input);
         void setSharp(float sharp);
         void setMod(float mod);
-        void setAttackshape(float attackShape);
-        void setAttackRate(float attackRate);
+        void setAttack(float attack);
         void setFilterVelocity(float filterVelocity);
         void setGreaseVelocity(float GreaseVelocity);
         void setGreaseKeyboard(float GreaseKeyboard);
@@ -153,7 +152,7 @@ class Oscillator {
         float m_pitchbend = 0.f;
         float m_sharp = 0.f;
         float m_mod = 0.f;
-        float m_attackRate = 0.f;
+        float m_attack = 0.f;
         float m_attackShape = 0.f;
         float m_filterVelocity = 0.f;
         float m_greaseVelocity = 0.f;

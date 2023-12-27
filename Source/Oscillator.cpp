@@ -18,7 +18,7 @@ Oscillator::Oscillator()
     m_freq = 1.f;
     midi_note_number = 0;
     m_sharp = 0.f;
-    m_attackRate = 0.1f;
+    m_attack = 0.1f;
     m_attackShape = 0.75f;
     m_resonance = 0.01f;
     m_bassoff = 0.f;
@@ -66,7 +66,7 @@ void Oscillator::setup(float sampleRate)
     // lfo1.setDepth(1.0f);
     // lfo1.setRate(0.4f);
     m_lfo_value = 0.0f;
-    m_attackRate = 0.1f;
+    m_attack = 0.1f;
     m_attackShape = 0.75f;
     m_filter_decay = 0.0f;
     m_filterAmount = 0.1f;
@@ -117,7 +117,7 @@ void Oscillator::reset(float sampleRate)
     // lfo1.setDepth(1.0f);
     // lfo1.setRate(1.0f);
     m_lfo_value = 0.0f;
-    m_attackRate = 0.1f;
+    m_attack = 0.1f;
     m_attackShape = 0.75f;
     m_filterFM = 0.1f;
     m_filterFMVelocity = 0.1f;
@@ -339,17 +339,13 @@ void Oscillator::setFilterDecayShape(float filterDecayshape)
                                                                                : filterDecayshape;
 }
 
-void Oscillator::setAttackRate(float attackRate)
+void Oscillator::setAttack(float attack)
 {
-    m_attackRate = attackRate < 0.f ? 0.f : attackRate > 1.f ? 1.f
-                                                             : attackRate;
+    m_attack = attack < 0.f ? 0.f : attack > 1.f ? 1.f
+                                                             : attack;
 }
 
-void Oscillator::setAttackshape(float attackShape)
-{
-    m_attackShape = attackShape < 0.f ? 0.f : attackShape > 1.f ? 1.f
-                                                                : attackShape;
-}
+
 
 void Oscillator::setCutoff(float cutoff)
 {

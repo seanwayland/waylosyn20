@@ -96,15 +96,13 @@ void MySynthesiserVoice::setModParameter(float mod)
     oscillator.setMod(mod);
 }
 
-void MySynthesiserVoice::setAttackRateParameter(float attackRate)
+void MySynthesiserVoice::setAttackParameter(float attack)
 {
-    oscillator.setAttackRate(attackRate);
+    //oscillator.setAttack(attack);
+    envelope.SetAttackRateSecs(attack*100);
 }
 
-void MySynthesiserVoice::setAttackShapeParameter(float attackShape)
-{
-    oscillator.setAttackshape(attackShape);
-}
+
 
 void MySynthesiserVoice::setFilterVelocityParameter(float filterVelocity)
 {
@@ -233,17 +231,13 @@ void MySynthesiser::setModParameter(float mod)
         dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setModParameter(mod);
 }
 
-void MySynthesiser::setAttackRateParameter(float attackRate)
+void MySynthesiser::setAttackParameter(float attack)
 {
     for (int i = 0; i < getNumVoices(); i++)
-        dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setAttackRateParameter(attackRate);
+        dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setAttackParameter(attack);
 }
 
-void MySynthesiser::setAttackShapeParameter(float attackShape)
-{
-    for (int i = 0; i < getNumVoices(); i++)
-        dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setAttackShapeParameter(attackShape);
-}
+
 
 void MySynthesiser::setFilterVelocityParameter(float filterVelocity)
 {
@@ -502,14 +496,6 @@ AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
                                                      NormalisableRange<float>(0.001f, 1.f, 0.001f, 0.5f),
                                                      0.002f, secondSliderValueToText, secondSliderTextToValue));
 
-    parameters.push_back(std::make_unique<Parameter>(ParameterID(String("attackRate"), 1), String("AttackRate"), String(),
-                                                     NormalisableRange<float>(0.001f, 1.f, 0.0001f, 0.5f),
-                                                     0.780f, secondSliderValueToText, secondSliderTextToValue));
-
-    parameters.push_back(std::make_unique<Parameter>(ParameterID(String("attackShape"), 1), String("AttackShape"), String(),
-                                                     NormalisableRange<float>(0.001f, 1.f, 0.0001f, 0.5f),
-                                                     0.907f, secondSliderValueToText, secondSliderTextToValue));
-
     parameters.push_back(std::make_unique<Parameter>(ParameterID(String("decay"), 1), String("Decay"), String(),
                                                      NormalisableRange<float>(0.001f, 10.f, 0.001f, 0.5f),
                                                      1.678f, secondSliderValueToText, secondSliderTextToValue));
@@ -684,8 +670,6 @@ waylosynth2::waylosynth2()
     synthesiser.addSound(new MySynthesiserSound());
 
     attackParameter = parameters.getRawParameterValue("attack");
-    attackRateParameter = parameters.getRawParameterValue("attackRate");
-    attackShapeParameter = parameters.getRawParameterValue("attackShape");
     decayParameter = parameters.getRawParameterValue("decay");
     sustainParameter = parameters.getRawParameterValue("sustain");
     releaseParameter = parameters.getRawParameterValue("release");
@@ -1146,8 +1130,7 @@ void waylosynth2::processBlock(AudioBuffer<float> &buffer, MidiBuffer &midiMessa
     // synthesiser.setSpacetypeParameter((int)*spaceParameter);
     synthesiser.setSharpParameter(*sharpParameter);
     synthesiser.setModParameter(*modParameter);
-    synthesiser.setAttackRateParameter(*attackRateParameter);
-    synthesiser.setAttackShapeParameter(*attackShapeParameter);
+    synthesiser.setAttackParameter(*attackParameter);
     synthesiser.setFilterVelocityParameter(*filtVelocityParameter);
     synthesiser.setGreaseVelocityParameter(*greaseVelocityParameter);
     synthesiser.setGreaseKeyboardParameter(*greaseKeyboardParameter);
