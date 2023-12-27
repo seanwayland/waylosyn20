@@ -19,7 +19,7 @@ Oscillator::Oscillator()
     midi_note_number = 0;
     m_sharp = 0.f;
     m_attack = 0.1f;
-    m_attackShape = 0.75f;
+    m_decay = 0.75f;
     m_resonance = 0.01f;
     m_bassoff = 0.f;
     m_detune = 1.0f;
@@ -67,7 +67,7 @@ void Oscillator::setup(float sampleRate)
     // lfo1.setRate(0.4f);
     m_lfo_value = 0.0f;
     m_attack = 0.1f;
-    m_attackShape = 0.75f;
+    m_decay = 0.75f;
     m_filter_decay = 0.0f;
     m_filterAmount = 0.1f;
     m_filterSustain = 0.2f;
@@ -118,7 +118,7 @@ void Oscillator::reset(float sampleRate)
     // lfo1.setRate(1.0f);
     m_lfo_value = 0.0f;
     m_attack = 0.1f;
-    m_attackShape = 0.75f;
+    m_decay = 0.75f;
     m_filterFM = 0.1f;
     m_filterFMVelocity = 0.1f;
     m_oneOverSr = 1.f / m_sampleRate;
@@ -345,6 +345,11 @@ void Oscillator::setAttack(float attack)
                                                              : attack;
 }
 
+void Oscillator::setDecay(float decay)
+{
+    m_decay = decay < 0.f ? 0.f : decay > 1.f ? 1.f
+                                                             : decay;
+}
 
 
 void Oscillator::setCutoff(float cutoff)

@@ -102,6 +102,12 @@ void MySynthesiserVoice::setAttackParameter(float attack)
     envelope.SetAttackRateSecs(attack*100);
 }
 
+void MySynthesiserVoice::setDecayParameter(float decay)
+{
+    //oscillator.setAttack(attack);
+    envelope.SetFallRate1Secs(decay*10);
+}
+
 
 
 void MySynthesiserVoice::setFilterVelocityParameter(float filterVelocity)
@@ -235,6 +241,12 @@ void MySynthesiser::setAttackParameter(float attack)
 {
     for (int i = 0; i < getNumVoices(); i++)
         dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setAttackParameter(attack);
+}
+
+void MySynthesiser::setDecayParameter(float decay)
+{
+    for (int i = 0; i < getNumVoices(); i++)
+        dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setDecayParameter(decay);
 }
 
 
@@ -1124,13 +1136,14 @@ void waylosynth2::processBlock(AudioBuffer<float> &buffer, MidiBuffer &midiMessa
     //for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
     //    buffer.clear(i, 0, buffer.getNumSamples());
 
-    synthesiser.setEnvelopeParameters(ADSR::Parameters{*attackParameter, *decayParameter, *sustainParameter, *releaseParameter});
+    //synthesiser.setEnvelopeParameters(ADSR::Parameters{*attackParameter, *decayParameter, *sustainParameter, *releaseParameter});
     synthesiser.setWavetypeParameter((int)*typeParameter);
     synthesiser.setFilterTypeParameter((int)*filterTypeParameter);
     // synthesiser.setSpacetypeParameter((int)*spaceParameter);
     synthesiser.setSharpParameter(*sharpParameter);
     synthesiser.setModParameter(*modParameter);
     synthesiser.setAttackParameter(*attackParameter);
+    synthesiser.setDecayParameter(*decayParameter);
     synthesiser.setFilterVelocityParameter(*filtVelocityParameter);
     synthesiser.setGreaseVelocityParameter(*greaseVelocityParameter);
     synthesiser.setGreaseKeyboardParameter(*greaseKeyboardParameter);
