@@ -105,14 +105,20 @@ void MySynthesiserVoice::setAttackParameter(float attack)
 void MySynthesiserVoice::setDecayParameter(float decay)
 {
     //oscillator.setAttack(attack);
-    envelope.SetFallRate1Secs(decay*10);
+    envelope.SetFallRate1Secs(decay*100);
 }
 
 
 void MySynthesiserVoice::setReleaseParameter(float release)
 {
     //oscillator.setAttack(attack);
-    envelope.SetReleaseRateSecs(release*10);
+    envelope.SetReleaseRateSecs(release*100);
+}
+
+void MySynthesiserVoice::setsustainParameter(float sustain)
+{
+    //oscillator.setAttack(attack);
+    envelope.SetFallRate2Secs(sustain*100);
 }
 
 
@@ -261,6 +267,11 @@ void MySynthesiser::setReleaseParameter(float release)
         dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setReleaseParameter(release);
 }
 
+void MySynthesiser::setsustainParameter(float sustain)
+{
+    for (int i = 0; i < getNumVoices(); i++)
+        dynamic_cast<MySynthesiserVoice *>(getVoice(i))->setReleaseParameter(sustain);
+}
 
 
 void MySynthesiser::setFilterVelocityParameter(float filterVelocity)
@@ -1157,6 +1168,7 @@ void waylosynth2::processBlock(AudioBuffer<float> &buffer, MidiBuffer &midiMessa
     synthesiser.setAttackParameter(*attackParameter);
     synthesiser.setDecayParameter(*decayParameter);
     synthesiser.setReleaseParameter(*releaseParameter);
+    synthesiser.setsustainParameter(*sustainParameter);
     synthesiser.setFilterVelocityParameter(*filtVelocityParameter);
     synthesiser.setGreaseVelocityParameter(*greaseVelocityParameter);
     synthesiser.setGreaseKeyboardParameter(*greaseKeyboardParameter);
