@@ -68,6 +68,7 @@ void Oscillator::setup(float sampleRate)
     m_lfo_value = 0.0f;
     m_attack = 0.1f;
     m_decay = 0.75f;
+    m_release = 0.75f;
     m_filter_decay = 0.0f;
     m_filterAmount = 0.1f;
     m_filterSustain = 0.2f;
@@ -119,6 +120,7 @@ void Oscillator::reset(float sampleRate)
     m_lfo_value = 0.0f;
     m_attack = 0.1f;
     m_decay = 0.75f;
+    m_release = 0.75f;
     m_filterFM = 0.1f;
     m_filterFMVelocity = 0.1f;
     m_oneOverSr = 1.f / m_sampleRate;
@@ -349,6 +351,13 @@ void Oscillator::setDecay(float decay)
 {
     m_decay = decay < 0.f ? 0.f : decay > 1.f ? 1.f
                                                              : decay;
+}
+
+
+void Oscillator::setRelease(float release)
+{
+    m_release = release < 0.f ? 0.f : release > 1.f ? 1.f
+                                                             : release;
 }
 
 

@@ -57,7 +57,7 @@ private:
   double attack_rate_secs = 5;
   double fall_rate_1_secs = 15;
   double fall_rate_2_secs = 0.2;
-  double release_rate_secs = 1.0;
+  double release_rate_secs = 0.5;
   double rate_scale = 1.0; // 1 is one sec , 2 is 2 secs
   int state = 1;           // 0 is idle , 1 is attack, 2 is decay one , 3 is decay 2 , 4 is release
 };

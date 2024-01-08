@@ -34,6 +34,7 @@ struct MySynthesiserVoice   : public SynthesiserVoice
     void setModParameter(float mod);
     void setAttackParameter(float attack);
     void setDecayParameter(float decay);
+    void setReleaseParameter(float release);
     void setFilterVelocityParameter(float filterVelocity);
     void setGreaseVelocityParameter(float greaseVelocity);
     void setGreaseKeyboardParameter(float greaseKeyboard);
@@ -79,6 +80,7 @@ public:
     void setModParameter(float mod);
     void setAttackParameter(float attack);
     void setDecayParameter(float decay);
+    void setReleaseParameter(float release);
     void setFilterVelocityParameter(float filterVelocity);
     void setGreaseVelocityParameter(float greaseVelocity);
     void setGreaseKeyboardParameter(float greaseKeyboard);
